@@ -11,6 +11,12 @@ app.use(cors());
 //define backend port:
 const PORT = 3002
 
+//define routes
+const router = require("./routes/patient-routes");
+
+//define url and first unique identifier
+app.use("/patient",router)
+
 //establish link to MongoDB
 mongoose.connect("mongodb+srv://mcknightdarold33:Student123!@cluster0.mtvps33.mongodb.net/CapeHealthCare?retryWrites=true&w=majority").then(()=> console.log
 ("Connected To Database"))
