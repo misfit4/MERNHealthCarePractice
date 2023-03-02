@@ -124,3 +124,277 @@ module.exports = mongoose.model("PatientInformation", patientSchema);
 
 *end of content
 *update repository
+
+
+8.) Set Up Controllers for functionality for urls
+
+    -create a folder titled Controllers 
+    -create a file inside to hold Controllers
+
+content for patient-controllers.js:
+
+const patientSchema = require("../model/PatientInformation");
+const getAllPatients = async (req, res, next) =>{
+    let patients;
+    try{
+        patients = await PatientSchema.find()
+    }catch(err){
+    console.log(err)
+    }
+    if(!patients){
+        return res.status(404).json({message: "No Patients Found"})
+    }
+    return res.status(200).json({patients});
+};
+
+// define function to fetch individual information from DB
+const getById = async (req, res, next) =>{
+    const id = req.params.id;
+    let patient;
+    try{
+        patient = await PatientSchema.findById(id);
+    }catch(err){
+        console.log(err)
+    }
+    if(!patient){
+        return res.status(404).json({message: "No Patient Found"})
+    }
+    return res.status(200).json({patient})
+};
+
+
+//create function to add patient to DB
+const addPatient = async (req, res, next)=>{
+    const {name, dob, insurance, patient_id, discharged} = req.body;
+    let patient;
+    try{
+        patient = new PatientSchema({
+            name, 
+            dob, 
+            insurance, 
+            patient_id, 
+            discharged
+        });
+        await patient.save();
+    }catch(err){
+        console.log(err)
+    }
+    if(!patient){
+        return res.status(500).json({message : "Unable to Add Patient"})
+    }
+    return res.status(201).json({patient})
+};
+
+//create function to update a value based on ID
+
+const updatePatient = async (req, res, next) => {
+    const id = req.params.id;
+    const {name, dob, insurance, patient_id, discharged } = req.body;
+    let patient;
+    try{
+        patient = await PatientSchema.findByIdAndUpdate(id, {
+            name, 
+            dob, 
+            insurance, 
+            patient_id, 
+            discharged
+        });
+        patient = await patient.save();
+    }catch(err){
+        console.log(err);
+    }
+    if(!patient){
+        return res.status(404).json({message: "Unable to update by this ID value"})
+    }
+    return res.status(200).json({patient});
+};
+
+//create function to delete patient from DB
+const deletePatient = async (req,res, next) => {
+    const id = req.params.id;
+    let patient;
+    try{
+        patient = await PatientSchema.findByIdAndRemove(id);
+    } catch(err){
+        console.log(err);
+    }
+    if(!patient){
+        return res.status(404).json({ message: "Unable to Delete By This ID"});
+    }
+    return res.status(200).json({message: "Patient Successfully Deleted"})
+};
+exports.getAllPatients = getAllPatients;
+exports.getById = getById;
+exports.addPatient = addPatient;
+exports.updatePatient = updatePatient;
+exports.deletePatient  = deletePatient ;
+
+*end of content, update repository
+
+9.) Create routes to assign functionality to URLs 
+
+content for patient-routes.js 
+
+constexpress = require("express");
+const router = express.ROuter();
+const patientControllers = require("../controllers/patient-controllers");
+
+//assign funcitonality to URL's
+//localhost:3002/patient/
+router.post("/", patientControllers.addPatient);
+
+//localhost/3002/patient/:id
+router.get("/:id", patientControllers.getById);
+
+//localhost:3002/patient/:id
+router.put("/:id", patientControllers.updatePatient);
+
+//localhost:3002/patient/:id
+router.delete("/:id", patientControllers.deletePatient);
+
+module.exports = router;
+
+*end of content
+
+const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+mongoose.set('strictQuery', true);
+
+//Middleware
+app.use(express.json());
+const cors = require("cors");
+app.use(cors());
+
+//define backend port:
+const PORT = 3002
+
+//define routes
+const router = require("./routes/patient-routes");
+
+//define url and first unique identifier
+app.use("/patient",router)
+
+//establish link to MongoDB
+mongoose.connect("mongodb+srv://mcknightdarold33:Student123!@cluster0.mtvps33.mongodb.net/CapeHealthCare?retryWrites=true&w=majority").then(()=> console.log
+("Connected To Database"))
+.then(()=>console.log("Backend Server Listening on PORT: " + PORT))
+.then(()=>{
+    app.listen(PORT)
+}).catch((err)=>console.log(err));
+
+
+*end of content 
+
+11.) Test out URLS in thunder client 
+
+
+
+ENd of Backend Confirguration
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Front End Configuration:
+
+1.) Split terminal
+
+Navigate to Client folder on command line in terminal window
+
+    command: cd client
+
+Install react and front end dependencies
+
+
+Create Client Folder. command to install REACT: npx create-react-app .
+
+install react router for URLS and CRUD ops: 
+commnad: npm install react-router-dom@6
+
+install MaterialUI Library to render images
+command: npm install @mui/material @emotion/react @emotion/styled
+
+then search for icons after download in search bar on smae page:
+icons command: 
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+
+or npm install @mui/icons material
+
+install axios: 
+
+    npm instal axios
+
+then npm start on command line
+
+2.) Clear out default values
+
+-Delete all content for app.css and app.js
+-delete app.tests.js
+- clear out index.css
+-delete logo.svg
+-delete reportwebvitals and setuptests.js
+-delete the import statement of "import reportWebVitals from './reportWebVitals';" from index.js
+
+
+3.) create folder stucture for front end
+
+-create new folder titled "components" in src folder. create 4 new files inside of "components", Home.js, Header.js,AddPatient.js, About.js
+
+4.) Content for Home.js
+
+import { Button, Typography, Box } from "@mui/material";
+import React from "react";
+import { Link } from "react-router-dom";
+const Home = () => {
+  return (
+    <div>
+      <Box display="flex" flexDirection="column" alignItems="center">
+        <Button
+          LinkComponent={Link}
+          to="/patient"
+          sx={{ marginTop: 15, background: "blue" }}
+          variant="contained"
+        >
+          <Typography variant="h3">View Patient Information</Typography>
+        </Button>
+      </Box>
+    </div>
+  );
+};
+export default Home;
+
+*end of content, update repository
+
+5.) content for header.js:
+import React, { useState } from "react";
+import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
+import LibraryBooksOutlinedIcon from "@mui/icons-material/LibraryBooksOutlined";
+import { NavLink } from "react-router-dom";
+const Header = () => {
+  const [value, setValue] = useState();
+  return (
+    <div>
+      <AppBar sx={{ backgroundColor: "blue" }} position="sticky">
+        <Toolbar>
+          <NavLink to="/" style={{ color: "white" }}>
+            <Typography>
+              <LibraryBooksOutlinedIcon />
+            </Typography>
+          </NavLink>
+          <Tabs
+            sx={{ ml: "auto" }}
+            textColor="inherit"
+            indicatorColor="primary"
+            value={value}
+            onChange={(e, val) => setValue(val)}
+          >
+            <Tab LinkComponent={NavLink} to="/add" label="Add Patient" />
+            <Tab LinkComponent={NavLink} to="/patient" label="Patient Information" />
+            <Tab LinkComponent={NavLink} to="/about" label="About MERN Health" />
+          </Tabs>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
+};
+export default Header;
+
