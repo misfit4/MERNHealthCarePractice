@@ -82,3 +82,45 @@ mongoose.connect("mcknightdarold33:<password>@cluster0.mtvps33.mongodb.net/?retr
 
 
 STart server with npm command: npm start
+
+7.) Create Folder to Hold Mongoose Model(structuring of information)
+
+-Create folder titled "Model" in server folder, and then create file 
+titled as the same name as your collection.
+
+
+content for PatientInformation
+
+const mongoose = require("mongoose")
+const Schema = mongoose.Schema;
+
+const patientSchema = new Schema({
+
+name: {
+    type: String,
+    required: true,
+  },
+  dob: {
+    type: String,
+    required: true,
+  },
+  patient_id: {
+    type: Number,
+    required: true,
+  },
+  insurance: {
+    type: String,
+    required: true,
+  },
+  discharged: {
+    type: Boolean,
+  },
+
+})
+
+
+module.exports = mongoose.model("PatientInformation", patientSchema);
+
+
+*end of content
+*update repository
