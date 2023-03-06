@@ -75,8 +75,8 @@ then npm start:
 ![AddPatient](MD%20Images/AddPatient.png)
 
 3.) Update Patient Information
-![Update Patient](MD20%Images/AddPatient.png)
 ![Alt text](MD%20images/Update%20Patient.png)
+
 4.) Create Patient InformationWebpage to display information from collection
 ![Alt text](MD%20images/PatientInformation.png)
 
