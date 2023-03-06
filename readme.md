@@ -27,7 +27,7 @@ CRUD OPERATIONS FOR BACKEND:
 1.) Create Post Request to populate DB
 
 *insert screen shot of using post request url to send information to DB
-![Alt text](../../Pictures/Screenshots/Screenshot%20(8).png)
+![Usage of Post Request](MD%20images/Screenshot%20(8).png)
 
 
 2.) Create Get request to get all information from DB. 
