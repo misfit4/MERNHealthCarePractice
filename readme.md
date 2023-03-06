@@ -32,20 +32,20 @@ CRUD OPERATIONS FOR BACKEND:
 
 2.) Create Get request to get all information from DB. 
 *insert screenshot of using get requet to fetch values from collection from DB
-![Alt text](../../Pictures/Screenshots/Screenshot%20(9).png)
+![Create Get request](MD%20images/Screenshot%20(9).png)
 
 3.) Create get request to fetch individual value from Db
 
 *screen shot of using request to fetch individual value from DB
-![Alt text](../../Pictures/Screenshots/Screenshot%20(13).png)
+![Fetch Individual Value](MD%20images/Screenshot%20(13).png)
 
 4.) Create update request to update information for values in collection. 
 
 *insert screenshot of using update request to update information
-![Alt text](../../Pictures/Screenshots/Screenshot%20(12).png)
+![Update Information](MD%20images/Screenshot%20(12).png)
 
 5.) Create delete request to delete a value from collection.
-![Alt text](../../Pictures/Screenshots/Screenshot%20(11).png)
+![Delete Request](MD%20images/Screenshot%20(11).png)
 
 
 npx - NPX stands for Node Package eXecute. It is simply an NPM package runner. It allows developers to execute any Javascript Package available 
@@ -69,7 +69,7 @@ or npm install @mui/icons material
 then npm start:
 
 1.) Create home page with navigation bar and image:
-![Home Page](MD%20Images/HomePage.png)
+![Home Page](MD%20Images/Home Page.png)
 
 2.) Create "Add Patient" webpage to send values to collection
 ![AddPatient](MD%20Images/AddPatient.png)
