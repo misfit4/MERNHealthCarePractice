@@ -1,8 +1,12 @@
 import { Button, Typography, Box } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
+import "./Home.css"
+import hospital from "../images/hospital.jpg"
 const Home = () => {
   return (
+    <>
+    <img src={hospital} alt="hospital"></img>
     <div>
       <Box display="flex" flexDirection="column" alignItems="center">
         <Button
@@ -15,6 +19,8 @@ const Home = () => {
         </Button>
       </Box>
     </div>
+    </>
   );
+
 };
 export default Home;

@@ -16,5 +16,68 @@ cors = Cross-origin resource sharing is a mechanism that allows restricted resou
 
 command: npm install mongoose cors express nodemon
 
-- insert screenshit if dependencies in json
+- insert screenshot if dependencies in json
 
+
+![Alt text](MD%20images/Screenshot%20(6).png)
+
+CRUD OPERATIONS FOR BACKEND:
+
+
+1.) Create Post Request to populate DB
+
+*insert screen shot of using post request url to send information to DB
+![Alt text](../../Pictures/Screenshots/Screenshot%20(8).png)
+
+
+2.) Create Get request to get all information from DB. 
+*insert screenshot of using get requet to fetch values from collection from DB
+![Alt text](../../Pictures/Screenshots/Screenshot%20(9).png)
+
+3.) Create get request to fetch individual value from Db
+
+*screen shot of using request to fetch individual value from DB
+![Alt text](../../Pictures/Screenshots/Screenshot%20(13).png)
+
+4.) Create update request to update information for values in collection. 
+
+*insert screenshot of using update request to update information
+![Alt text](../../Pictures/Screenshots/Screenshot%20(12).png)
+
+5.) Create delete request to delete a value from collection.
+![Alt text](../../Pictures/Screenshots/Screenshot%20(11).png)
+
+
+npx - NPX stands for Node Package eXecute. It is simply an NPM package runner. It allows developers to execute any Javascript Package available 
+on the NPM registry without even installing it. NPX is installed automatically with NPM version 5.2.
+
+Create Client Folder. command to install REACT: npx create-react-app .
+
+install react router for URLS and CRUD ops: 
+command: npm install react-router-dom@6
+
+install MaterialUI Library to render images
+command: npm install @mui/material @emotion/react @emotion/styled
+
+then search for icons after download in search bar on smae page:
+icons command: 
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+
+or npm install @mui/icons material
+
+
+then npm start:
+
+1.) Create home page with navigation bar and image:
+![Home Page](MD%20Images/HomePage.png)
+
+2.) Create "Add Patient" webpage to send values to collection
+![AddPatient](MD%20Images/AddPatient.png)
+
+3.) Update Patient Information
+![Update Patient](MD20%Images/AddPatient.png)
+
+4.) Create Patient InformationWebpage to display information from collection
+![Patient Information](MD20%Images/PatientInformation.png)
+5.) Delete Patient from Patient Information Webpage
+![Delete Patient](MD20%Images/deletePatient.png)
