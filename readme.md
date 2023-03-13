@@ -69,10 +69,10 @@ or npm install @mui/icons material
 then npm start:
 
 1.) Create home page with navigation bar and image:
-![Home Page](MD%20Images/Home Page.png)
+![Alt text](MD%20Images/Home Page.png)
 
 2.) Create "Add Patient" webpage to send values to collection
-![AddPatient](MD%20Images/AddPatient.png)
+![Alt text](MD%20Images/AddPatient.png)
 
 3.) Update Patient Information
 ![Alt text](MD%20images/Update%20Patient.png)
